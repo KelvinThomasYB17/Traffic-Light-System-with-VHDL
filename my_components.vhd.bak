@@ -1,0 +1,39 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+package my_components is
+	
+	component divisor_freq is
+	generic (N         : natural := 50000000;        
+           BUS_WIDTH : natural := 26);
+	port( signal reset_n :  in std_logic;
+        signal clk     :  in std_logic;
+        signal clk_o   : out std_logic);
+	end component divisor_freq;
+	
+  
+	component rebote_pulsador is
+	port( signal clk     :  in std_logic;
+        signal input       :  in std_logic;  
+		  signal q       : out std_logic);
+	end component rebote_pulsador;
+	
+	
+	component traffic_light is
+	generic (n     : natural := 36;        
+            width : natural :=6);
+	port( signal reset_n :  in std_logic;
+        signal clk     :  in std_logic;
+        signal en      :  in std_logic;
+        signal red, green       : out std_logic);
+	end component traffic_light;
+	
+	component cod16a4 is
+	port( w : in std_logic_vector(15 downto 0);
+		y : out std_logic_vector(3 downto 0);
+		z : out std_logic);
+	end component cod16a4;
+	
+	
+
+end my_subcircuits;
